@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Review to Star Rating Transformer</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <style>
+    body {
+      padding-top: 54px;
+    }
+
+    @media (min-width: 992px) {
+      body {
+        padding-top: 56px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="home.html">Review to Star Rating Transformer</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a class="nav-link" href="index.html">Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="home.html">Rating</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="map.html">Map</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="statistics.html">Statistics</a>
+            <span class="sr-only">(current)</span>
+
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="mt-5" style="margin-bottom: 40px;">Statistics</h1>
+        <h2 class="mt-5" style="margin-bottom: 40px;">Punctuations</h2>
+        <img src="images/statistics.jpg" class="img-fluid" style="margin-bottom: 40px;" alt="Statistics – Punctuations">
+        <p style="margin-bottom: 40px;" align="justify">One of the statistics we chose to look at is whether the number of punctuation points can be correlated with good or bad reviews. From the processing of natural language, we know the importance of punctuation in the meaning of a sentence and, finally, whether a review ends up being positive or negative. In the charts we see the number of punctuation points in relation to the number of reviews for each star type. This number is normalized to allow comparisons. We quickly conclude that the number of punctuation points does not seem to affect whether a review has been scored with 1, 2, 3, 4 or 5 stars as the distribution in each of the charts is the same.</p>
+        <h2 class="mt-5" style="margin-bottom: 40px;">Fans</h2>
+        <img src="images/statistics2.jpg" class="img-fluid" style="margin-bottom: 40px;" alt="Statistics – Fans">
+        <p style="margin-bottom: 40px;" align="justify">Another statistic that we chose to study was about how much the number of fans of each user affects their final evaluation. Since a user has many or few fans, he can move in a different way about restaurant annotation and review. The charts below show the number of fans in relation to the total of user ratings for each star type. The conclusion that emerges by observing the charts is that users with many fans tend to do more positive reviews against negative ones. This seems to be reasonable because the influence of a user with many fans is great, so he can very easily predispose his audience negatively. However, in the final study, this parameter was not taken into account as we would lose cases of new users who would not have been able to get fans.
+        </p>
+        <h2 class="mt-5" style="margin-bottom: 40px;">Capitals</h2>
+        <img src="images/capitals.jpg" class="img-fluid" style="margin-bottom: 40px;" alt="Statistics – Fans">
+        <p style="margin-bottom: 40px;" align="justify">
+          The next statistic that we examined has to do with words written in capitals in a review and if these words can help us identify a review,
+           concerning its stars. The above graphs represent the count of words written in capitals divided by the count of all words in the review.
+           We can see that as we move to 5 stars, the amount increases. However, the distribution remains the same. As a result, we can assume that
+           this statistic is not relevant to the number of stars given in a review, so we did not take note of it.
+        </p>
+        <h2 class="mt-5" style="margin-bottom: 40px;">Price</h2>
+        <img src="images/price.jpg" class="img-fluid" style="margin-bottom: 40px;" alt="Statistics – Fans">
+        <p style="margin-bottom: 40px;" align="justify">
+          About this statistic, we want to find out whether a reference to price is relevant to review's stars or not. So, in these graphs we see the count 
+          of words like "dollar", "dollars", "cent", "cents" and the symbol "$" in a review. As we notice, the amount of references increases as the stars increase,
+           too, but the distribution remains the same. So, again, we come to the conclusion that this statistic does not help us identify reviews with different
+           star rating and we did not consider it in the preprocessing step.
+        </p>
+        <h2 class="mt-5" style="margin-bottom: 40px;">Different Words</h2>
+        <img src="images/unique_words.jpg" class="img-fluid" style="margin-bottom: 40px;" alt="Statistics – Fans">
+        <p style="margin-bottom: 40px;" align="justify">
+          Here, we want to check if different star ratings can be recognized based on the count of different words in each review. The graphs represent the count
+           of different (unique) words divided by the count of all words in the review. We see that this amount increases rapidly for 4 and 5 stars. However, the distribution
+           is quite similar in all 5 stars, so we chose not to take note of this statistic either.
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

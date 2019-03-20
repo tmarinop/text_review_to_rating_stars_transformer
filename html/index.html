@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Review to Star Rating Transformer</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <style>
+    body {
+      padding-top: 54px;
+    }
+
+    @media (min-width: 992px) {
+      body {
+        padding-top: 56px;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="home.html">Review to Star Rating Transformer</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="home.html">Rating</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="map.html">Map</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="statistics.html">Statistics</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="mt-5" style="margin-bottom: 40px;">TextReview2StarRating</h1>
+        <p align="justify">TextReview2StarRating is a service that transforms a text review to a rating in the form of [1-5] stars.</p>
+
+        <p align="justify">In order to train our models we use the dataset provided from Yelp containing reviews for venues. We trained several Machine Learning models like <b>Naive Bayes</b> and <b>SVM</b> that lead us in <b>an accuracy of 59% at most</b>. We then tried the Neural Networks approach by training a <b>Convolutional Neural Network</b> and two <b>Recurrent Neural Networks</b>: an <b>LSTM</b> and an <b>LSTM with an attention layer</b>.</p>
+
+        <p align="justify">The <b>CNN</b> reached to an accuracy of <b>61.5%</b>, the <b>LSTM</b> to an accuracy of <b>62.5</b> and the <b>LSTM with an attention layer</b> to an accuracy of <b>63.1%</b>. There are a lot of parameters that we can still experiment with and that they may lead us to an even better result.</p>
+
+
+        <p align="justify">Additionally, on the evaluation we performed we used a <b>confusion matrix</b> whitch proved that 85% of our models mistake are neighbouring classes. In other words, our model could wrongly evaluate a 5-star text review as a 4-star one, but rarely it would have evaluated the same review as an 1-star one. And even these mistakes were happening in reviews that wasn't clear what they meant.</p>
+
+        <p align="justify">In this page you will find a lightweight example of a small model we trained for presentation purposes. Additionally, in our project we provide a Python implementation of a RESTful API that can exploit the full potentional of our model. In the rest of the pages you can also find some data analytics we performed on the Yelp's dataset.</p>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

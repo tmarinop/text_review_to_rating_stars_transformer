@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Review to Star Rating Transformer</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/landing-page.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      padding-top: 54px;
+    }
+
+    @media (min-width: 992px) {
+      body {
+        padding-top: 56px;
+      }
+    }
+
+    .checked {
+        color: orange;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="keras.js" charset="UTF-8"></script>
+
+  <script>
+    const model = new KerasJS.Model({
+      filepaths: {
+        model: 'models/yelp_reviews.json',
+        weights: 'models/yelp_reviews_weights.buf',
+        metadata: 'models/yelp_reviews_metadata.json'
+      },
+      gpu: true
+    });
+
+
+    function predict() {
+      console.log('foo');
+      model.ready().then(() => {
+          // input data object keyed by names of the input layers
+          // or `input` for Sequential models
+          // values are the flattened Float32Array data
+          // (input tensor shapes are specified in the model config)
+
+          const inputData = {
+            'input': new Float32Array(getClearText())
+          }
+
+          // make predictions
+          return model.predict(inputData);
+        })
+        .then(outputData => {
+          var max = 0;
+          var max_pos = -1;
+          for (var i = 0; i < outputData.output.length; i++) {
+            if (outputData.output[i] > max) {
+              max = outputData.output[i];
+              max_pos = i;
+            }
+          }
+          var stars = max_pos + 1;
+
+          var x1 = document.getElementById("1_star");
+          var x2 = document.getElementById("2_star");
+          var x3 = document.getElementById("3_star");
+          var x4 = document.getElementById("4_star");
+          var x5 = document.getElementById("5_star");
+          var l = document.getElementById("review_label");
+
+          if (stars == 1) {
+            l.style.display = "block";
+            x1.style.display = "block";
+            x2.style.display = "none";
+            x3.style.display = "none";
+            x4.style.display = "none";
+            x5.style.display = "none";
+          } else if (stars == 2) {
+            l.style.display = "block";
+            x1.style.display = "none";
+            x2.style.display = "block";
+            x3.style.display = "none";
+            x4.style.display = "none";
+            x5.style.display = "none";
+          } else if (stars == 3) {
+            l.style.display = "block";
+            x1.style.display = "none";
+            x2.style.display = "none";
+            x3.style.display = "block";
+            x4.style.display = "none";
+            x5.style.display = "none";
+          } else if (stars == 4) {
+            l.style.display = "block";
+            x1.style.display = "none";
+            x2.style.display = "none";
+            x3.style.display = "none";
+            x4.style.display = "block";
+            x5.style.display = "none";
+          } else if (stars == 5) {
+            l.style.display = "block";
+            x1.style.display = "none";
+            x2.style.display = "none";
+            x3.style.display = "none";
+            x4.style.display = "none";
+            x5.style.display = "block";
+          } else {
+            l.style.display = "none";
+            x1.style.display = "none";
+            x2.style.display = "none";
+            x3.style.display = "none";
+            x4.style.display = "none";
+            x5.style.display = "none";
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    }
+  </script>
+
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="home.html">Review to Star Rating Transformer</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="home.html">Rating</a>
+            <span class="sr-only">(current)</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="map.html">Map</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="statistics.html">Statistics</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Masthead -->
+  <header class="masthead text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-10 mx-auto">
+          <h1 class="mb-5" style="margin-bottom:40px;">Text Review to Star Rating Transformer</h1>
+        </div>
+        <div class="col-md-10 col-lg-10 col-xl-8 mx-auto">
+          <div class="form-row">
+            <div class="col-12 col-md-9 mb-2 mb-md-0" style="margin-right: auto; margin-left: auto;">
+              <textarea type="text" id="text" class="form-control form-control-lg" rows="4" placeholder="Enter your text..."></textarea>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-12 col-md-3 text-center" style="margin-top: 10px;margin-right: auto; margin-left: auto;">
+                <button class="btn btn-block btn-lg btn-primary" onclick="predict()">Get Rating!</button>
+            </div>
+          </div>
+          <p style="margin-top: 40px; display: none;" id="review_label">Your review's rating is estimated as:</h2>
+          <br>
+
+          <div id="1_star" style="display: none;">
+            <span class="fa fa-star checked" style="font-size: 30px;"></span>
+            <span class="fa fa-star" style="font-size: 30px;"></span>
+            <span class="fa fa-star" style="font-size: 30px;"></span>
+            <span class="fa fa-star" style="font-size: 30px;"></span>
+            <span class="fa fa-star" style="font-size: 30px;"></span>
+          </div>
+
+          <div id="2_star" style="display: none;">
+            <span class="fa fa-star checked" style="font-size: 30px;"></span>
+            <span class="fa fa-star checked" style="font-size: 30px;"></span>
+            <span class="fa fa-star" style="font-size: 30px;"></span>
+            <span class="fa fa-star" style="font-size: 30px;"></span>
+            <span class="fa fa-star" style="font-size: 30px;"></span>
+          </div>
+
+          <div id="3_star" style="display: none;">
+            <span class="fa fa-star checked" style="font-size: 30px;"></span>
+            <span class="fa fa-star checked" style="font-size: 30px;"></span>
+            <span class="fa fa-star checked" style="font-size: 30px;"></span>
+            <span class="fa fa-star" style="font-size: 30px;"></span>
+            <span class="fa fa-star" style="font-size: 30px;"></span>
+          </div>
+
+          <div id="4_star" style="display: none;">
+            <span class="fa fa-star checked" style="font-size: 30px;"></span>
+            <span class="fa fa-star checked" style="font-size: 30px;"></span>
+            <span class="fa fa-star checked" style="font-size: 30px;"></span>
+            <span class="fa fa-star checked" style="font-size: 30px;"></span>
+            <span class="fa fa-star" style="font-size: 30px;"></span>
+          </div>
+
+          <div id="5_star" style="display: none;">
+            <span class="fa fa-star checked" style="font-size: 30px;"></span>
+            <span class="fa fa-star checked" style="font-size: 30px;"></span>
+            <span class="fa fa-star checked" style="font-size: 30px;"></span>
+            <span class="fa fa-star checked" style="font-size: 30px;"></span>
+            <span class="fa fa-star checked" style="font-size: 30px;"></span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
